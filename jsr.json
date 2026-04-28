@@ -1,0 +1,37 @@
+{
+  "name": "@dep/mdx-layer",
+  "version": "1.0.0",
+  "description": "A lightweight, type-safe MDX-to-JSON compiler and watcher for Deno.",
+  "exports": {
+    ".": "./src/mod.ts",
+    "./cli": "./src/cli.ts",
+    "./config": "./src/core/config.ts"
+  },
+  "author": {
+    "name": "Estarlin R.",
+    "email": "dev@estarlincito.com",
+    "url": "https://estarlincito.com"
+  },
+  "homepage": "https://github.com/dep-ts/mdx-layer#readme",
+  "repository": "https://github.com/dep-ts/mdx-layer",
+  "bugs": "https://github.com/dep-ts/mdx-layer/issues",
+  "keywords": [
+    "mdx",
+    "md",
+    "content-layer",
+    "static-site-generation",
+    "ssg",
+    "typescript",
+    "deno",
+    "type-safe-data",
+    "cms",
+    "git-based-cms",
+    "json-generator",
+    "watcher"
+  ],
+  "license": "MIT",
+  "publish": {
+    "include": ["src", "LICENSE", "README.md"],
+    "exclude": ["**/tests/**"]
+  }
+}
