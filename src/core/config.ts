@@ -2,7 +2,7 @@
 // import type { ObjectSchema } from '@dep/schema';
 import { resolveConfigPath } from '@/utils/path.ts';
 import { toFileUrl } from '@dep/path';
-import { bold, cyan, red } from '@std/fmt/colors';
+import { bold, red } from '@std/fmt/colors';
 
 /**
  * Represents the standard structure of a processed MDX entry.
@@ -59,7 +59,7 @@ export function defineConfig<T>(config: MdxLayerConfig<T>): MdxLayerConfig<T> {
  */
 export async function loadConfig(
   configPath?: string,
-): Promise<MdxLayerConfig & { configPath?: string }> {
+): Promise<MdxLayerConfig & { configPath?: string; ok?: boolean }> {
   const filePath = resolveConfigPath(configPath);
 
   if (!filePath) {
@@ -77,10 +77,10 @@ export async function loadConfig(
     }
 
     return { configPath: filePath };
-  } catch {
-    console.error(
-      `\n  ${red(bold('Error:'))} Invalid config file: ${cyan(filePath)}`,
-    );
-    return { configPath: filePath };
+  } catch (error) {
+    if (error instanceof Error) {
+      console.error(`\n  ${red(bold('Error:'))} ${error.message}`);
+    }
+    return { ok: false };
   }
 }

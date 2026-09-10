@@ -37,6 +37,10 @@ import { hasUnknown } from '@/utils/unknown.ts';
  * ```
  */
 export async function builder(config: MdxLayerConfig = {}): Promise<void> {
+  if ('ok' in config) {
+    if (!config.ok) return;
+  }
+
   const contentDir = config.contentDir ?? './content';
   const outDir = config.outDir ?? '.mdx-layer';
   const docType = config.docType ?? 'Content';
