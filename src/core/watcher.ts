@@ -33,6 +33,10 @@ import { logDirNotFound, logUpdate } from '@/utils/log.ts';
  * ```
  */
 export async function watcher(config: MdxLayerConfig = {}) {
+  if ('ok' in config) {
+    if (!config.ok) return;
+  }
+
   const contentDir = config.contentDir ?? './content';
   const outDir = config.outDir ?? '.mdx-layer';
 
@@ -52,7 +56,7 @@ export async function watcher(config: MdxLayerConfig = {}) {
   await builder(config);
 
   const watcher = Deno.watchFs(contentDir);
-  let timer: number | undefined;
+  let timer: NodeJS.Timeout | undefined;
 
   for await (const event of watcher) {
     if (['create', 'modify', 'rename', 'remove'].includes(event.kind)) {

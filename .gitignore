@@ -8,6 +8,8 @@
 /out/
 .DS_Store
 *.pem
+mdx-layer.config.ts
+schema.ts
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
