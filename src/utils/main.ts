@@ -1,3 +1,5 @@
+import { slug } from '@dep/slug';
+
 export type ImportsMap = Record<string, Record<string, string>>;
 
 export async function generateJsonImports(
@@ -8,12 +10,13 @@ export async function generateJsonImports(
 
   for (const [group, imports] of Object.entries(importsMap)) {
     const names = Object.keys(imports);
+    const groupId = slug(group, { lowercase: false, separator: '' });
 
     for (const [name, path] of Object.entries(imports)) {
       lines.push(`import ${name} from '${path}' with { type: 'json' };`);
     }
 
-    lines.push(`export const ${group} = [${names.join(', ')}];`);
+    lines.push(`export const ${groupId} = [${names.join(', ')}];`);
   }
 
   await Deno.writeTextFile(`${outDir}/main.ts`, lines.join('\n'));

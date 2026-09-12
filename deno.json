@@ -1,6 +1,6 @@
 {
   "name": "@dep/mdx-layer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "exports": {
     ".": "./src/mod.ts",
     "./cli": "./src/cli.ts",
@@ -36,11 +36,15 @@
   },
   "lint": {
     "rules": {
-      "tags": ["recommended"]
+      "tags": [
+        "recommended"
+      ]
     }
   },
   "fmt": {
-    "exclude": ["README.md"],
+    "exclude": [
+      "README.md"
+    ],
     "useTabs": false,
     "lineWidth": 80,
     "indentWidth": 2,

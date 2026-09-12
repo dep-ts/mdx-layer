@@ -1,6 +1,6 @@
 {
   "name": "@dep/mdx-layer",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A lightweight, type-safe MDX-to-JSON compiler and watcher for Deno.",
   "exports": {
     ".": "./src/mod.ts",
@@ -31,7 +31,13 @@
   ],
   "license": "MIT",
   "publish": {
-    "include": ["src", "LICENSE", "README.md"],
-    "exclude": ["**/tests/**"]
+    "include": [
+      "src",
+      "LICENSE",
+      "README.md"
+    ],
+    "exclude": [
+      "**/tests/**"
+    ]
   }
 }
